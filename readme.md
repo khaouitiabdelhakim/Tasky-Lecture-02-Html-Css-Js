@@ -2,6 +2,19 @@
 
 Welcome to Ramadan Labs! This is where Khaouiti Abdlhakim and Bnegmah Anass bring you an exciting journey into the world of web and mobile development. We believe in making learning fun and practical, covering a wide range of topics from foundational concepts to advanced frameworks.
 
+```
+If you find this repository useful or it has helped you,
+please don't forget to leave a ⭐️, or even follow my GitHub account.
+Your support motivates me to continue providing helpful resources.
+Thank you for your appreciation! 🌟🚀💖😊👍
+
+If you'd like to support further, consider buying me a coffee:
+```
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee--yellow.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/kh.abdelhakim)
+
+## Authors
+Bengmah Anass - KHAOUITI Abdelhakim
+
 ## About Us
 
 We are Khaouiti Abdlhakim and Bnegmah Anass, your guides on this development adventure. With our combined experience and passion for dev, we aim to empower you with the knowledge and skills needed to excel in web and mobile development.
@@ -39,3 +52,21 @@ Happy coding! 🚀
 
 Khaouiti Abdlhakim and Bnegmah Anass  
 Ramadan Labs
+
+
+## Contribution
+
+```
+Fork this repository if you wish to make changes or contribute improvements.
+```
+
+## License
+
+```
+Copyright 2024 Bengmah Anass - KHAOUITI Abdelhakim
+powered by KHAOUITI Apps
+
+Licensed under the MIT License
+You may obtain a copy of the License at
+
+http://opensource.org/licenses/MIT
