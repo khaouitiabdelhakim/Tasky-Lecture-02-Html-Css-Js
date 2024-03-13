@@ -3,83 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tasky</title>
+  <title>Tasky App</title>
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
   <style>
-    .task-item {
-      margin-bottom: 10px;
+    .completed {
+      text-decoration: line-through;
     }
   </style>
 </head>
 <body>
-  <div class="container mt-4">
-    <h1>Tasky</h1>
-    <form id="taskForm" class="mt-3">
-      <div class="form-group">
-        <input type="text" class="form-control" id="taskTitle" placeholder="Enter task title" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Add Task</button>
-    </form>
-    <div id="taskList" class="mt-3">
-    </div>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Tasky</h1>
+    <input type="text" id="taskInput" class="form-control mb-3" placeholder="Add a new task">
+    <button id="addTaskBtn" class="btn btn-primary btn-block">Add Task</button>
+    <ul id="taskList" class="list-group mt-3"></ul>
   </div>
 
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const taskForm = document.getElementById('taskForm');
-      const taskTitleInput = document.getElementById('taskTitle');
-      const taskList = document.getElementById('taskList');
-
-      // Load tasks from local storage
+    // Function to load tasks from local storage
+    function loadTasks() {
       const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        if (task.completed) {
+          li.classList.add('completed');
+        }
+        li.innerHTML = `
+          <span>${task.text}</span>
+          <button class="btn btn-sm btn-danger float-right delete-btn">Delete</button>
+          <button class="btn btn-sm btn-success float-right mr-2 complete-btn">Complete</button>
+        `;
+        taskList.appendChild(li);
+      });
+    }
 
-      // Display existing tasks
-      displayTasks();
+    // Function to add a new task
+    function addTask(text) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push({ text, completed: false });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
 
-      // Add new task
-      taskForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const taskTitle = taskTitleInput.value.trim();
-        if (taskTitle !== '') {
-          const newTask = { id: Date.now(), title: taskTitle };
-          tasks.push(newTask);
-          displayTasks();
-          saveTasks();
-          taskTitleInput.value = '';
+    // Function to delete a task
+    function deleteTask(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    // Function to mark a task as completed
+    function toggleCompleted(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks[index].completed = !tasks[index].completed;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTasks();
+
+      // Event listener for add task button
+      document.getElementById('addTaskBtn').addEventListener('click', () => {
+        const taskInput = document.getElementById('taskInput');
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+          addTask(taskText);
+          taskInput.value = '';
         }
       });
 
-      // Delete task
-      taskList.addEventListener('click', function(event) {
-        if (event.target.classList.contains('delete-task')) {
-          const taskId = parseInt(event.target.getAttribute('data-id'));
-          tasks.splice(tasks.findIndex(task => task.id === taskId), 1);
-          displayTasks();
-          saveTasks();
+      // Event delegation for delete and complete buttons
+      document.getElementById('taskList').addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-btn')) {
+          const index = [...e.target.parentElement.parentElement.children].indexOf(e.target.parentElement);
+          deleteTask(index);
+        } else if (e.target.classList.contains('complete-btn')) {
+          const index = [...e.target.parentElement.parentElement.children].indexOf(e.target.parentElement);
+          toggleCompleted(index);
         }
       });
-
-      // Display tasks
-      function displayTasks() {
-        taskList.innerHTML = '';
-        tasks.forEach(task => {
-          const taskItem = document.createElement('div');
-          taskItem.classList.add('task-item');
-          taskItem.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center">
-              <div>${task.title}</div>
-              <button class="btn btn-danger delete-task" data-id="${task.id}">Delete</button>
-            </div>
-          `;
-          taskList.appendChild(taskItem);
-        });
-      }
-
-      // Save tasks to local storage
-      function saveTasks() {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-      }
     });
   </script>
+
 </body>
 </html>
