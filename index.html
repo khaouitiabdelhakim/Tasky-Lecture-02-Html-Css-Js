@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasky App</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1 class="mb-4">Tasky</h1>
+    <input type="text" id="taskInput" class="form-control mb-3" placeholder="Add a new task">
+    <button id="addTaskBtn" class="btn btn-primary btn-block">Add Task</button>
+    <ul id="taskList" class="list-group mt-3"></ul>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to load tasks from local storage
+    function loadTasks() {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        if (task.completed) {
+          li.classList.add('completed');
+        }
+        li.innerHTML = `
+          <span>${task.text}</span>
+          <button class="btn btn-sm btn-danger float-right delete-btn">Delete</button>
+          <button class="btn btn-sm btn-success float-right mr-2 complete-btn">Complete</button>
+        `;
+        taskList.appendChild(li);
+      });
+    }
+
+    // Function to add a new task
+    function addTask(text) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.push({ text, completed: false });
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    // Function to delete a task
+    function deleteTask(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    // Function to mark a task as completed
+    function toggleCompleted(index) {
+      const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+      tasks[index].completed = !tasks[index].completed;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      loadTasks();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTasks();
+
+      // Event listener for add task button
+      document.getElementById('addTaskBtn').addEventListener('click', () => {
+        const taskInput = document.getElementById('taskInput');
+        const taskText = taskInput.value.trim();
+        if (taskText !== '') {
+          addTask(taskText);
+          taskInput.value = '';
+        }
+      });
+
+      // Event delegation for delete and complete buttons
+      document.getElementById('taskList').addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-btn')) {
+          const index = [...e.target.parentElement.parentElement.children].indexOf(e.target.parentElement);
+          deleteTask(index);
+        } else if (e.target.classList.contains('complete-btn')) {
+          const index = [...e.target.parentElement.parentElement.children].indexOf(e.target.parentElement);
+          toggleCompleted(index);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

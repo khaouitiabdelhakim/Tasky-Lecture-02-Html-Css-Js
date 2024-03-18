@@ -8,7 +8,7 @@ please don't forget to leave a ⭐️, or even follow my GitHub account.
 Your support motivates me to continue providing helpful resources.
 Thank you for your appreciation! 🌟🚀💖😊👍
 
-If you'd like to support further, consider buying me a coffee:
+If you'd like to support further, consider buying us a coffee:
 ```
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee--yellow.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/kh.abdelhakim)
 
@@ -70,3 +70,10 @@ Licensed under the MIT License
 You may obtain a copy of the License at
 
 http://opensource.org/licenses/MIT
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the MIT License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the MIT License.
+```
