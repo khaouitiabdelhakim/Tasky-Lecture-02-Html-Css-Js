@@ -1,6 +1,6 @@
 # Ramadan Labs - Tasky
 
-Welcome to Ramadan Labs! This is where Khaouiti Abdlhakim and Bnegmah Anass bring you an exciting journey into the world of web and mobile development. We believe in making learning fun and practical, covering a wide range of topics from foundational concepts to advanced frameworks.
+Welcome to Ramadan Labs! This is where Khaouiti Abdlhakim brings you an exciting journey into the world of web and mobile development. We believe in making learning fun and practical, covering a wide range of topics from foundational concepts to advanced frameworks.
 
 ```
 If you find this repository useful or it has helped you,
@@ -12,8 +12,10 @@ If you'd like to support further, consider buying us a coffee:
 ```
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee--yellow.svg?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/kh.abdelhakim)
 
+![labWeb](https://github.com/khaouitiabdelhakim/Tasky-Lecture-02-Html-Css-Js/blob/main/Ramadan%20labs%20Lectures%20-%2002.png)
+
 ## Authors
-Bengmah Anass - KHAOUITI Abdelhakim
+KHAOUITI Abdelhakim
 
 ## About Us
 
@@ -63,7 +65,7 @@ Fork this repository if you wish to make changes or contribute improvements.
 ## License
 
 ```
-Copyright 2024 Bengmah Anass - KHAOUITI Abdelhakim
+Copyright 2024 KHAOUITI Abdelhakim
 powered by KHAOUITI Apps
 
 Licensed under the MIT License
