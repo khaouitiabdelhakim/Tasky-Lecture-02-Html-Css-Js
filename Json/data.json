@@ -1,0 +1,46 @@
+{
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "author": "Douglas Adams",
+    "publication_year": 1979,
+    "genres": ["Science Fiction", "Comedy"],
+    "publisher": {
+      "name": "Pan Books",
+      "location": "London"
+    },
+    "characters": [
+      {
+        "name": "Arthur Dent",
+        "species": "Human"
+      },
+      {
+        "name": "Ford Prefect",
+        "species": "Betelgeusian"
+      },
+      {
+        "name": "Zaphod Beeblebrox",
+        "species": "Betelgeusian"
+      },
+      {
+        "name": "Trillian",
+        "species": "Human"
+      },
+      {
+        "name": "Marvin",
+        "species": "Robot"
+      }
+    ],
+    "rating": 4.5,
+    "reviews": [
+      {
+        "username": "booklover42",
+        "rating": 5,
+        "comment": "Absolutely hilarious! A must-read for any sci-fi fan."
+      },
+      {
+        "username": "reader123",
+        "rating": 4,
+        "comment": "Enjoyed it a lot, although some parts were a bit confusing."
+      }
+    ]
+  }
+  
